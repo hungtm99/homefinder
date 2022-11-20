@@ -1,0 +1,136 @@
+﻿@model IEnumerable<DoAnHomeFinder.Models.BaiDang>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh sách bài đăng</h2>
+
+@*<p>
+    @Html.ActionLink("Thêm mới Bài đăng", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th class="text-center">
+            STT
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tieu_de)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dia_chi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dien_tich)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mo_ta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sdt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.thoi_gian)
+        </th>
+
+        <th>
+            Tiện ích chung
+        </th>
+        <th class="text-center">
+            Trạng thái
+        </th>
+        <th class="text-center" style="max-width:50px !important;">
+            Hành động
+        </th>
+    </tr>
+
+@{
+    int i = 0;
+}
+@foreach (var item in Model) {
+<tr>
+    <td class="text-center">
+        @{ i++; }
+        @i
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tieu_de)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.dia_chi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.dien_tich)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.gia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.mo_ta)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.sdt)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.thoi_gian)
+    </td>
+    <td>
+        <p>
+            @Html.DisplayFor(modelItem => item.bep_nau): @Html.DisplayNameFor(model => model.bep_nau)
+        </p>
+        <p>
+            @Html.DisplayFor(modelItem => item.dieu_hoa): @Html.DisplayNameFor(model => model.dieu_hoa)
+        </p>
+        <p>
+            @Html.DisplayFor(modelItem => item.giu_xe): @Html.DisplayNameFor(model => model.giu_xe)
+        </p>
+        <p>
+            @Html.DisplayFor(modelItem => item.may_giat): @Html.DisplayNameFor(model => model.may_giat)
+        </p>
+        <p>
+            @Html.DisplayFor(modelItem => item.nha_ve_sinh): @Html.DisplayNameFor(model => model.nha_ve_sinh)
+        </p>
+        <p>
+            @Html.DisplayFor(modelItem => item.tu_do): @Html.DisplayNameFor(model => model.tu_do)
+        </p>
+        <p>
+            @Html.DisplayFor(modelItem => item.tu_lanh): @Html.DisplayNameFor(model => model.tu_lanh)
+        </p>
+        <p>
+            @Html.DisplayFor(modelItem => item.wifi): @Html.DisplayNameFor(model => model.wifi)
+        </p>
+    </td>
+    <td class="text-center">
+        @if (item.trang_thai_duyet.ToString() == "True")
+        {
+            <span class="label label-success">Đã duyệt</span>
+        }
+        else
+        {
+            <span class="label label-warning">Chưa duyệt</span>
+        }
+    </td>
+    <td style="max-width:50px !important;">
+        <div class="text-center">
+            @Html.ActionLink("Xem", "Detail", new { id = item.id_bai_dang }, new { @class = "btn btn-default btn-sm" })
+        </div>
+        <div class="text-center" style="margin-top:10px;">
+            @Html.ActionLink("Sửa", "Edit", new { id = item.id_bai_dang }, new { @class = "btn btn-primary btn-sm" })
+        </div>
+        <div class="text-center" style="margin-top:10px;">
+            @Html.ActionLink("Xóa", "Delete", new { id = item.id_bai_dang }, new { @class = "btn btn-danger btn-sm" })
+        </div>
+    </td>
+</tr>
+}
+
+</table>

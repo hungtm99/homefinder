@@ -1,0 +1,75 @@
+﻿@model DoAnHomeFinder.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Chỉnh sửa thông tin người dùng</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.id_nguoi_dung, htmlAttributes: new { @class = " col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.id_nguoi_dung, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.id_nguoi_dung, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ten, htmlAttributes: new { @class = " col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ten, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ten, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.sdt, htmlAttributes: new { @class = " col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.sdt, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.sdt, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.email, htmlAttributes: new { @class = " col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.mat_khau, htmlAttributes: new { @class = " col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.mat_khau, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.mat_khau, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-2">
+            <p><b>Quản trị viên:</b></p>
+        </div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.quyen)
+            @Html.ValidationMessageFor(model => model.quyen, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-info" })
+            <input type="submit" value="Lưu thông tin" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}

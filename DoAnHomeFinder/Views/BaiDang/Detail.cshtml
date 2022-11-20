@@ -1,0 +1,148 @@
+﻿@model DoAnHomeFinder.Models.BaiDang
+
+@{
+    ViewBag.Title = "Detail";
+}
+<div class="text-center">
+    <h2>Chi tiết bài đăng</h2> <br />
+</div>
+
+<style>
+    table {
+        border-collapse: separate;
+        border-spacing: 10px 10px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-8">
+        <table>
+            <tr>
+                <td>
+                    <p> <b>Thông tin chung</b></p>
+                </td>
+            </tr>
+            <tr>
+                <td>Người đăng: </td>
+                <td>
+                    <b>@Html.DisplayFor(model => model.name)</b>
+                </td>
+            </tr>
+            <tr>
+                <td>Thời gian đăng: </td>
+                <td>
+                    <b>@Html.DisplayFor(model => model.thoi_gian)</b>
+                </td>
+            </tr>
+            <tr>
+                <td>Tiêu đề bài đăng: </td>
+                <td>
+                    <b>@Html.DisplayFor(model => model.tieu_de)</b>
+                </td>
+            </tr>
+            <tr>
+                <td>Mô tả bài đăng: </td>
+                <td>
+                    <b>@Html.DisplayFor(model => model.mo_ta)</b>
+                </td>
+            </tr>
+            <tr>
+                <td>Địa chỉ: </td>
+                <td>
+                    <b>@Html.DisplayFor(model => model.dia_chi)</b>
+                </td>
+            </tr>
+            <tr>
+                <td>Diện tích: </td>
+                <td>
+                    <b>@Html.DisplayFor(model => model.dien_tich)</b>
+                </td>
+            </tr>
+            <tr>
+                <td>Giá: </td>
+                <td>
+                    <b>@Html.DisplayFor(model => model.gia)</b>
+                </td>
+            </tr>
+            <tr>
+                <td>Số điện thoại liên hệ: </td>
+                <td>
+                    <b>@Html.DisplayFor(model => model.sdt)</b>
+                </td>
+            </tr>
+            <tr>
+                <td>Trạng thái bài đăng: </td>
+                <td>
+                    @if (ViewBag.trangthaiduyet == true)
+                    {
+                        <b><span style="color:green;">Đã duyệt</span></b>
+                    }
+                    else
+                    {
+                        <b> <span style="color:red;">Chưa duyệt</span></b>
+                    }
+</tr>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <table>
+            <tr>
+                <td>
+                    <p> <b>Tiện tích chung</b></p>
+                    <p>
+                        @Html.DisplayFor(model => model.bep_nau) : @Html.DisplayNameFor(model => model.bep_nau)
+                    </p>
+                    <p>
+                        @Html.DisplayFor(model => model.dieu_hoa) : @Html.DisplayNameFor(model => model.dieu_hoa)
+                    </p>
+                    <p>
+                        @Html.DisplayFor(model => model.giu_xe) : @Html.DisplayNameFor(model => model.giu_xe)
+                    </p>
+                    <p>
+                        @Html.DisplayFor(model => model.may_giat) : @Html.DisplayNameFor(model => model.may_giat)
+                    </p>
+                    <p>
+                        @Html.DisplayFor(model => model.nha_ve_sinh) : @Html.DisplayNameFor(model => model.nha_ve_sinh)
+                    </p>
+                    <p>
+                        @Html.DisplayFor(model => model.tu_do) : @Html.DisplayNameFor(model => model.tu_do)
+                    </p>
+                    <p>
+                        @Html.DisplayFor(model => model.tu_lanh) : @Html.DisplayNameFor(model => model.tu_lanh)
+                    </p>
+                    <p>
+                        @Html.DisplayFor(model => model.wifi) : @Html.DisplayNameFor(model => model.wifi)
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<p><b>Ảnh bài đăng: </b></p>
+<div class="row">
+    @foreach (var item in ViewBag.image)
+    {
+        <div class="col-md-3" style="margin:5px;">
+            <img src="@item" alt="Không có ảnh" class="img-fluid" width="307" height="240">
+        </div>
+    }
+</div>
+<br />
+<br />
+<div class="text-center">
+    <p>
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.id }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-info" })
+        @if (ViewBag.trangthaiduyet == false)
+        {
+            @Html.ActionLink("Duyệt bài", "Duyet", new { id = Model.id }, new { @class = "btn btn-success" })
+        }
+        else
+        {
+            @Html.ActionLink("Bỏ duyệt bài", "BoDuyet", new { id = Model.id }, new { @class = "btn btn-warning" })
+        }
+        @Html.ActionLink("Xóa bài đăng", "Delete", new { id = Model.id }, new { @class = "btn btn-danger" })
+    </p>
+</div>
+<br />
+<br />
+<br />

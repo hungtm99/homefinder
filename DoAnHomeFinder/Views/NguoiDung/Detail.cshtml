@@ -1,0 +1,60 @@
+﻿@model DoAnHomeFinder.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Thông tin chi tiết người dùng</h2>
+<style>
+    table {
+        border-collapse: separate;
+        border-spacing: 10px 10px;
+    }
+</style>
+<div>
+    <hr />
+    <table>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.id_nguoi_dung):</td>
+            <td><b>@Html.DisplayFor(model => model.id_nguoi_dung)</b></td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.ten):</td>
+            <td><b>@Html.DisplayFor(model => model.ten)</b></td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.email):</td>
+            <td><b>@Html.DisplayFor(model => model.email)</b></td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.sdt):</td>
+            <td><b>@Html.DisplayFor(model => model.sdt)</b></td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.mat_khau):</td>
+            <td><b>@Html.DisplayFor(model => model.mat_khau)</b></td>
+        </tr>
+        <tr>
+            <td>Quyền:</td>
+            <td><b>
+                @if (Model.quyen == 0)
+                {
+                    <span>User dùng app</span>
+                }
+                @if (Model.quyen == 1)
+                {
+                    <span>Quản trị viên</span>
+                }
+                @if (Model.quyen == 2)
+                {
+                    <span>Admin</span>
+                }
+            </b>
+            </td>
+        </tr>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.id_nguoi_dung }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-info" })
+</p>
