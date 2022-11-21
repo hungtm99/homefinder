@@ -130,17 +130,17 @@
 <br />
 <div class="text-center">
     <p>
-        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.id }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.id_bai_dang }, new { @class = "btn btn-primary" })
         @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-info" })
         @if (ViewBag.trangthaiduyet == false)
         {
-            @Html.ActionLink("Duyệt bài", "Duyet", new { id = Model.id }, new { @class = "btn btn-success" })
+            @Html.ActionLink("Duyệt bài", "Duyet", new { id = Model.id_bai_dang }, new { @class = "btn btn-success" })
         }
         else
         {
-            @Html.ActionLink("Bỏ duyệt bài", "BoDuyet", new { id = Model.id }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Bỏ duyệt bài", "BoDuyet", new { id = Model.id_bai_dang }, new { @class = "btn btn-warning" })
         }
-        @Html.ActionLink("Xóa bài đăng", "Delete", new { id = Model.id }, new { @class = "btn btn-danger" })
+        @Html.ActionLink("Xóa bài đăng", "Delete", new { id = Model.id_bai_dang }, new { @class = "btn btn-danger" })
     </p>
 </div>
 <br />

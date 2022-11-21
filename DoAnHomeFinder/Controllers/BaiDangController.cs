@@ -87,6 +87,7 @@ namespace DoAnHomeFinder.Controllers
         {
             client = new FireSharp.FirebaseClient(config);
             var data = baidang;
+            data.list_image = new List<string>();
             PushResponse response = client.Push("room/", data);
             data.id = response.Result.name;
             SetResponse setResponse = client.Set("room/" + data.id, data);
@@ -130,8 +131,16 @@ namespace DoAnHomeFinder.Controllers
         [HttpPost]
         public ActionResult Edit(BaiDang baidang)
         {
+            //Get list image
             client = new FireSharp.FirebaseClient(config);
+            FirebaseResponse response = client.Get("room/" + baidang.id_bai_dang);
+            BaiDang dataImg = JsonConvert.DeserializeObject<BaiDang>(response.Body);
+            var list_img = new List<string>();
+            list_img = dataImg.list_image;
+            //END Get list image
+
             var data = baidang;
+            data.list_image = list_img;
             SetResponse setResponse = client.Set("room/" + data.id_bai_dang, data);
             return RedirectToAction("Index");
         }
@@ -148,10 +157,10 @@ namespace DoAnHomeFinder.Controllers
         public ActionResult Duyet(string id)
         {
             client = new FireSharp.FirebaseClient(config);
-            FirebaseResponse response = client.Get("Web/" + id);
+            FirebaseResponse response = client.Get("room/" + id);
             BaiDang data = JsonConvert.DeserializeObject<BaiDang>(response.Body);
             data.trang_thai_duyet = true;
-            SetResponse setResponse = client.Set("Web/" + data.id, data);
+            SetResponse setResponse = client.Set("room/" + data.id_bai_dang, data);
             return RedirectToAction("Index");
         }
 
@@ -159,10 +168,10 @@ namespace DoAnHomeFinder.Controllers
         public ActionResult BoDuyet(string id)
         {
             client = new FireSharp.FirebaseClient(config);
-            FirebaseResponse response = client.Get("Web/" + id);
+            FirebaseResponse response = client.Get("room/" + id);
             BaiDang data = JsonConvert.DeserializeObject<BaiDang>(response.Body);
             data.trang_thai_duyet = false;
-            SetResponse setResponse = client.Set("Web/" + data.id, data);
+            SetResponse setResponse = client.Set("room/" + data.id_bai_dang, data);
             return RedirectToAction("Index");
         }
     }
