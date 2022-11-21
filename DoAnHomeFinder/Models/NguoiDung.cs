@@ -20,7 +20,7 @@ namespace DoAnHomeFinder.Models
         public string mat_khau { get; set; }
 
         [Display(Name = "Quyền")]
-        public int quyen { get; set; }
+        public string quyen { get; set; }
 
         [Display(Name = "Số điện thoại")]
         public string sdt { get; set; }

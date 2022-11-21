@@ -63,15 +63,15 @@
         @Html.DisplayFor(modelItem => item.mat_khau)
     </td>
     <td class="text-center">
-        @if (item.quyen == 0)
+        @if (item.quyen == "0")
         {
             <span>User dùng app</span>
         }
-        @if (item.quyen == 1)
+        @if (item.quyen == "1")
         {
             <span>Quản trị viên</span>
         }
-        @if (item.quyen == 2)
+        @if (item.quyen == "2")
         {
             <span>Admin</span>
         }

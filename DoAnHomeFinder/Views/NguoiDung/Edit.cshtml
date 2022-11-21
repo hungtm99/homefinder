@@ -61,19 +61,19 @@
         </div>
         <div class="col-md-10">
             <select class="form-control" id="exampleFormControlSelect1" name="quyen">
-                @if (Model.quyen == 0)
+                @if (Model.quyen == "0")
                 {
                     <option value="0" selected>User dùng app</option>
                     <option value="1">Quản trị viên</option>
                     <option value="2">Admin</option>
                 }
-                @if (Model.quyen == 1)
+                @if (Model.quyen == "1")
                 {
                     <option value="0">User dùng app</option>
                     <option value="1" selected>Quản trị viên</option>
                     <option value="2">Admin</option>
                 }
-                @if (Model.quyen == 2)
+                @if (Model.quyen == "2")
                 {
                     <option value="0">User dùng app</option>
                     <option value="1">Quản trị viên</option>

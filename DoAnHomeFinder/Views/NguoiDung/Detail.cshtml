@@ -37,15 +37,15 @@
         <tr>
             <td>Quyền:</td>
             <td><b>
-                @if (Model.quyen == 0)
+                @if (Model.quyen == "0")
                 {
                     <span>User dùng app</span>
                 }
-                @if (Model.quyen == 1)
+                @if (Model.quyen == "1")
                 {
                     <span>Quản trị viên</span>
                 }
-                @if (Model.quyen == 2)
+                @if (Model.quyen == "2")
                 {
                     <span>Admin</span>
                 }

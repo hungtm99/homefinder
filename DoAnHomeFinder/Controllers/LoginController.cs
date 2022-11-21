@@ -77,7 +77,7 @@ namespace DoAnHomeFinder.Controllers
             {
                 for (int i = 0; i < lstUser.Count(); i++)
                 {
-                    if (lstUser[i].email == Email && lstUser[i].mat_khau == MatKhau && lstUser[i].quyen != 0)
+                    if (lstUser[i].email == Email && lstUser[i].mat_khau == MatKhau && lstUser[i].quyen != "0")
                     {
                         Session["Email"] = Email;
                         Session["Quyen"] = lstUser[i].quyen;
