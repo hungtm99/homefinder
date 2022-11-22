@@ -8,8 +8,6 @@ namespace DoAnHomeFinder.Models
 {
     public class BaiDang
     {
-        public string id { get; set; }
-
         [Display(Name = "Bếp nấu")]
         public bool bep_nau { get; set; }
 
@@ -35,7 +33,7 @@ namespace DoAnHomeFinder.Models
         public string id_loai_bai_dang { get; set; }
 
         [Display(Name = "Mã người gửi")]
-        public string id_nguoi_dang { get; set; }
+        public string id_nguoi_dung { get; set; }
 
         [Display(Name = "Danh sách ảnh")]
         public List<string> list_image { get; set; }

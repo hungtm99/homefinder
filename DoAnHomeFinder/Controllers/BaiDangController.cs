@@ -89,8 +89,8 @@ namespace DoAnHomeFinder.Controllers
             var data = baidang;
             data.list_image = new List<string>();
             PushResponse response = client.Push("room/", data);
-            data.id = response.Result.name;
-            SetResponse setResponse = client.Set("room/" + data.id, data);
+            data.id_bai_dang = response.Result.name;
+            SetResponse setResponse = client.Set("room/" + data.id_bai_dang, data);
         }
 
         [HttpGet]
