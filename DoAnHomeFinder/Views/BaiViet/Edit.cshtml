@@ -1,0 +1,54 @@
+﻿@model DoAnHomeFinder.Models.BaiViet
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Chỉnh sửa bài viết</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Thông tin bài viết</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.tieu_de, htmlAttributes: new { @class = " col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.tieu_de, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.tieu_de, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.noi_dung, htmlAttributes: new { @class = "col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.noi_dung, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.noi_dung, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group" style="display:none;">
+                    @Html.LabelFor(model => model.id_bai_viet, htmlAttributes: new { @class = " col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.id_bai_viet, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.id_bai_viet, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+   
+        <div class="form-group">
+        <div class="text-center">
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-info" })
+            <input type="submit" value="Lưu thông tin" class="btn btn-default" />
+        </div>
+        </div>
+    </div>
+   
+}

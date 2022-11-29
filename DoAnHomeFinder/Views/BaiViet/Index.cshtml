@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DoAnHomeFinder.Models.BaiViet>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh sách bài viết</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới Bài viết", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th class="text-center">
+            STT
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_bai_viet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tieu_de)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.noi_dung)
+        </th>
+        <th class="text-center" style="max-width:50px !important;">
+            Hành động
+        </th>
+    </tr>
+
+@{
+    int i = 0;
+}
+@foreach (var item in Model) {
+<tr>
+    <td class="text-center">
+        @{ i++; }
+        @i
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.id_bai_viet)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tieu_de)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.noi_dung)
+    </td>
+       
+    <td style="max-width:50px !important;">
+        <div class="text-center">
+            @Html.ActionLink("Xem", "Detail", new { id = item.id_bai_viet }, new { @class = "btn btn-default btn-sm" })
+        </div>
+        <div class="text-center" style="margin-top:10px;">
+            @Html.ActionLink("Sửa", "Edit", new { id = item.id_bai_viet }, new { @class = "btn btn-primary btn-sm" })
+        </div>
+        <div class="text-center" style="margin-top:10px;">
+            @Html.ActionLink("Xóa", "Delete", new { id = item.id_bai_viet }, new { @class = "btn btn-danger btn-sm" })
+        </div>
+    </td>
+</tr>
+}
+
+</table>

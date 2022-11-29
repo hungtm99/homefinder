@@ -1,0 +1,59 @@
+﻿@model DoAnHomeFinder.Models.BaiViet
+
+@{
+    ViewBag.Title = "Detail";
+}
+<div class="text-center">
+    <h2>Chi tiết bài viết</h2> <br />
+</div>
+
+<style>
+    table {
+        border-collapse: separate;
+        border-spacing: 10px 10px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-8">
+        <table>
+            <tr>
+                <td>
+                    <p> <b>Thông tin chung</b></p>
+                </td>
+            </tr>
+            <tr>
+                <td>Tiêu đề bài viết: </td>
+                <td>
+                    <b>@Html.DisplayFor(model => model.tieu_de)</b>
+                </td>
+            </tr>
+            <tr>
+                <td>Nội dung bài viết: </td>
+                <td>
+                    <b>@Html.DisplayFor(model => model.noi_dung)</b>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<p><b>Ảnh bài viết: </b></p>
+<div class="row">
+    @foreach (var item in ViewBag.image)
+    {
+        <div class="col-md-3" style="margin:5px;">
+            <img src="@item" alt="Không có ảnh" class="img-fluid" width="307" height="240">
+        </div>
+    }
+</div>
+<br />
+<br />
+<div class="text-center">
+    <p>
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.id_bai_viet }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-info" })
+        @Html.ActionLink("Xóa bài đăng", "Delete", new { id = Model.id_bai_viet }, new { @class = "btn btn-danger" })
+    </p>
+</div>
+<br />
+<br />
+<br />

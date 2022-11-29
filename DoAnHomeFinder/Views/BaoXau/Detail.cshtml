@@ -1,0 +1,46 @@
+﻿@model DoAnHomeFinder.Models.BaoXau
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Thông tin chi tiết Báo XAU</h2>
+<style>
+    table {
+        border-collapse: separate;
+        border-spacing: 10px 10px;
+    }
+</style>
+<div>
+    <hr />
+    <table>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.id_baocao):</td>
+            <td><b>@Html.DisplayFor(model => model.id_baocao)</b></td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.id_bai_dang):</td>
+            <td><b>@Html.DisplayFor(model => model.id_bai_dang)</b></td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.id_nguoi_dung):</td>
+            <td><b>@Html.DisplayFor(model => model.id_nguoi_dung)</b></td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.tieu_de):</td>
+            <td><b>@Html.DisplayFor(model => model.tieu_de)</b></td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.noi_dung):</td>
+            <td><b>@Html.DisplayFor(model => model.noi_dung)</b></td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.thoi_gian):</td>
+            <td><b>@Html.DisplayFor(model => model.thoi_gian)</b></td>
+        </tr>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-info" })
+    @Html.ActionLink("Xóa báo cáo", "Delete", new { id = Model.id_baocao }, new { @class = "btn btn-danger" })
+</p>
