@@ -99,21 +99,23 @@ namespace DoAnHomeFinder.Controllers
             client = new FireSharp.FirebaseClient(config);
             FirebaseResponse response = client.Get("post/" + id);
             BaiViet data = JsonConvert.DeserializeObject<BaiViet>(response.Body);
+            List<string> image = new List<string>();
             try
             {
                 if (data.hinh_anh == null)
                 {
-                    ViewBag.image = " Không có ảnh";
+                    image.Add("Không có ảnh");
                 }
                 else
                 {
-                    ViewBag.image = data.hinh_anh;
+                    image.Add(data.hinh_anh);
                 }
             }
             catch (Exception)
             {
             }
-            
+            ViewBag.image = image;
+
             return View(data);
         }
 

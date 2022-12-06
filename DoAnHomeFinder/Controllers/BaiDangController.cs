@@ -119,14 +119,14 @@ namespace DoAnHomeFinder.Controllers
             return View(data);
         }
 
-            [HttpGet]
-            public ActionResult Edit(string id)
-            {
-                client = new FireSharp.FirebaseClient(config);
-                FirebaseResponse response = client.Get("room/" + id);
-                BaiDang data = JsonConvert.DeserializeObject<BaiDang>(response.Body);
-                return View(data);
-            }
+        [HttpGet]
+        public ActionResult Edit(string id)
+        {
+            client = new FireSharp.FirebaseClient(config);
+            FirebaseResponse response = client.Get("room/" + id);
+            BaiDang data = JsonConvert.DeserializeObject<BaiDang>(response.Body);
+            return View(data);
+        }
 
         [HttpPost]
         public ActionResult Edit(BaiDang baidang)
@@ -173,6 +173,16 @@ namespace DoAnHomeFinder.Controllers
             data.trang_thai_duyet = false;
             SetResponse setResponse = client.Set("room/" + data.id_bai_dang, data);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Search(string idbaidang)
+        {
+            var id = idbaidang;
+            client = new FireSharp.FirebaseClient(config);
+            FirebaseResponse response = client.Get("room/" + id);
+            BaiDang baidang = JsonConvert.DeserializeObject<BaiDang>(response.Body);
+            return Redirect("/BaiDang/Detail/"+id);
         }
     }
 }
