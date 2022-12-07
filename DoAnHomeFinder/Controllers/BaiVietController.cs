@@ -97,7 +97,7 @@ namespace DoAnHomeFinder.Controllers
         public ActionResult Detail(string id)
         {
             client = new FireSharp.FirebaseClient(config);
-            FirebaseResponse response = client.Get("post/" + id);
+            FirebaseResponse response = client.Get("post/" + id.Trim());
             BaiViet data = JsonConvert.DeserializeObject<BaiViet>(response.Body);
             List<string> image = new List<string>();
             try
