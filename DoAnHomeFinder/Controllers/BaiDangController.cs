@@ -59,6 +59,14 @@ namespace DoAnHomeFinder.Controllers
                     listReturn.Add(list[i]);
                 }
             }
+            var message = "";
+            if (TempData["Message"] != null){
+                message = TempData["Message"].ToString();
+                ViewBag.Message = message;
+                return View();
+            }
+
+            ViewBag.Message = message;
             return View(listReturn);
         }
 
@@ -100,6 +108,12 @@ namespace DoAnHomeFinder.Controllers
             FirebaseResponse response = client.Get("room/" + id);
             BaiDang data = JsonConvert.DeserializeObject<BaiDang>(response.Body);
             List<string> image = new List<string>();
+
+            if (data == null)
+            {
+                TempData["Message"] = "Không có thông tin tìm kiếm";
+                return RedirectToAction("Index");
+            }
             try
             {
                 if (data.list_image == null)
